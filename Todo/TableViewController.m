@@ -8,15 +8,15 @@
 
 #import "TableViewController.h"
 #import "CustomCell.h"
+#import "CustomCell.h"
 #import <objc/runtime.h>
 
-static const char * indexPathForCustomCell = "something";
-
+static const char * indexPathForCustomCell = "INDEX_PATH";
+static const char * justAddedFlag = "JUST_ADDED";
 @interface TableViewController ()
 
 @property (nonatomic, strong) NSMutableArray *tasks;
 @property (nonatomic, strong) UIBarButtonItem *addButton;
-@property (nonatomic, assign) int num;
 
 @end
 
@@ -27,7 +27,6 @@ static const char * indexPathForCustomCell = "something";
     self = [super initWithStyle:style];
     if (self) {
         self.tasks = [[NSMutableArray alloc] init];
-        self.num = 0;
     }
     return self;
 }
@@ -54,8 +53,7 @@ static const char * indexPathForCustomCell = "something";
 }
 
 -(IBAction) addTask {
-    self.num++;
-    [self.tasks addObject:[NSString stringWithFormat:@"NEW %d", self.num]];
+    [self.tasks addObject:@""];
     [self.tableView reloadData];
 }
 
@@ -87,12 +85,13 @@ static const char * indexPathForCustomCell = "something";
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     cell.textField.text = [self.tasks objectAtIndex:indexPath.row];
-    
     cell.textField.delegate = self;
     
-    
+    if (indexPath.row == [self.tasks count] - 1) {
+        [cell.textField becomeFirstResponder];
+    }
     objc_setAssociatedObject(cell.textField, indexPathForCustomCell, indexPath , OBJC_ASSOCIATION_RETAIN);
-    NSLog(@"%@",indexPath);
+
     return cell;
 }
 
@@ -101,6 +100,7 @@ static const char * indexPathForCustomCell = "something";
 
 - (BOOL) textFieldShouldBeginEditing:(UITextField *)textField {
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemDone target:self action:@selector(onDoneButton)];
+    self.navigationItem.leftBarButtonItem = nil; //shouldnt be able to rearrange/delete rows while updating a task
     
     return YES;
 }
@@ -113,6 +113,7 @@ static const char * indexPathForCustomCell = "something";
 
 - (void) onDoneButton {
     self.navigationItem.rightBarButtonItem = self.addButton;
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
     [self.view endEditing:YES];
 }
 
