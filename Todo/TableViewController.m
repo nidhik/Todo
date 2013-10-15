@@ -116,7 +116,8 @@ static const char * indexPathForCustomCell = "something";
     [self.view endEditing:YES];
 }
 
-//#pragma mark - UITableViewDelegate methods
+#pragma mark - UITableViewDelegate methods
+
 //
 //- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //    NSArray *paths = [[NSArray alloc] initWithObjects: indexPath, nil];
@@ -134,19 +135,20 @@ static const char * indexPathForCustomCell = "something";
 }
 */
 
-/*
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [self.tasks removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+//    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+//        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//    }   
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
