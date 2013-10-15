@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D0E877F180D185C00AB5C9E /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0E877E180D185C00AB5C9E /* CustomCell.xib */; };
 		1D44CD7A180A5EBD0091B9EB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D44CD79180A5EBD0091B9EB /* Foundation.framework */; };
 		1D44CD7C180A5EBD0091B9EB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D44CD7B180A5EBD0091B9EB /* CoreGraphics.framework */; };
 		1D44CD7E180A5EBD0091B9EB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D44CD7D180A5EBD0091B9EB /* UIKit.framework */; };
@@ -19,6 +20,8 @@
 		1D44CD95180A5EBD0091B9EB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D44CD7D180A5EBD0091B9EB /* UIKit.framework */; };
 		1D44CD9D180A5EBD0091B9EB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D44CD9B180A5EBD0091B9EB /* InfoPlist.strings */; };
 		1D44CD9F180A5EBD0091B9EB /* TodoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D44CD9E180A5EBD0091B9EB /* TodoTests.m */; };
+		1D44CDAA180A5F540091B9EB /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D44CDA9180A5F540091B9EB /* TableViewController.m */; };
+		1D44CDAD180A61440091B9EB /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D44CDAC180A61440091B9EB /* CustomCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D0E877E180D185C00AB5C9E /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		1D44CD76180A5EBD0091B9EB /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D44CD79180A5EBD0091B9EB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D44CD7B180A5EBD0091B9EB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,6 +52,10 @@
 		1D44CD9A180A5EBD0091B9EB /* TodoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TodoTests-Info.plist"; sourceTree = "<group>"; };
 		1D44CD9C180A5EBD0091B9EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1D44CD9E180A5EBD0091B9EB /* TodoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoTests.m; sourceTree = "<group>"; };
+		1D44CDA8180A5F540091B9EB /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		1D44CDA9180A5F540091B9EB /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		1D44CDAB180A61440091B9EB /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		1D44CDAC180A61440091B9EB /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +119,11 @@
 				1D44CD89180A5EBD0091B9EB /* AppDelegate.m */,
 				1D44CD8B180A5EBD0091B9EB /* Images.xcassets */,
 				1D44CD80180A5EBD0091B9EB /* Supporting Files */,
+				1D44CDA8180A5F540091B9EB /* TableViewController.h */,
+				1D44CDA9180A5F540091B9EB /* TableViewController.m */,
+				1D44CDAB180A61440091B9EB /* CustomCell.h */,
+				1D44CDAC180A61440091B9EB /* CustomCell.m */,
+				1D0E877E180D185C00AB5C9E /* CustomCell.xib */,
 			);
 			path = Todo;
 			sourceTree = "<group>";
@@ -219,6 +232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D0E877F180D185C00AB5C9E /* CustomCell.xib in Resources */,
 				1D44CD84180A5EBD0091B9EB /* InfoPlist.strings in Resources */,
 				1D44CD8C180A5EBD0091B9EB /* Images.xcassets in Resources */,
 			);
@@ -240,6 +254,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D44CD8A180A5EBD0091B9EB /* AppDelegate.m in Sources */,
+				1D44CDAA180A5F540091B9EB /* TableViewController.m in Sources */,
+				1D44CDAD180A61440091B9EB /* CustomCell.m in Sources */,
 				1D44CD86180A5EBD0091B9EB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,6 +457,7 @@
 				1D44CDA4180A5EBD0091B9EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1D44CDA5180A5EBD0091B9EB /* Build configuration list for PBXNativeTarget "TodoTests" */ = {
 			isa = XCConfigurationList;
@@ -449,6 +466,7 @@
 				1D44CDA7180A5EBD0091B9EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
