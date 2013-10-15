@@ -143,19 +143,21 @@ static const char * indexPathForCustomCell = "something";
         // Delete the row from the data source
         [self.tasks removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-//    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-//        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-//    }   
+    }
 }
 
 
-/*
+
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
+    NSObject *task = self.tasks[fromIndexPath.row];
+    [self.tasks removeObjectAtIndex:fromIndexPath.row];
+    [self.tasks insertObject:task atIndex:toIndexPath.row];
+    
+    [tableView reloadData];
 }
-*/
+
 
 /*
 // Override to support conditional rearranging of the table view.
