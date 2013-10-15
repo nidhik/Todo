@@ -12,7 +12,6 @@
 #import <objc/runtime.h>
 
 static const char * indexPathForCustomCell = "INDEX_PATH";
-static const char * justAddedFlag = "JUST_ADDED";
 @interface TableViewController ()
 
 @property (nonatomic, strong) NSMutableArray *tasks;
@@ -53,7 +52,7 @@ static const char * justAddedFlag = "JUST_ADDED";
 }
 
 -(IBAction) addTask {
-    [self.tasks addObject:@""];
+    [self.tasks insertObject:@"" atIndex:0];
     [self.tableView reloadData];
 }
 
@@ -87,7 +86,7 @@ static const char * justAddedFlag = "JUST_ADDED";
     cell.textField.text = [self.tasks objectAtIndex:indexPath.row];
     cell.textField.delegate = self;
     
-    if (indexPath.row == [self.tasks count] - 1) {
+    if (indexPath.row == 0) {
         [cell.textField becomeFirstResponder];
     }
     objc_setAssociatedObject(cell.textField, indexPathForCustomCell, indexPath , OBJC_ASSOCIATION_RETAIN);
