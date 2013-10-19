@@ -20,6 +20,8 @@ static NSString *tasks_key = @"TASKS";
 @property (nonatomic, strong) UIBarButtonItem *addButton;
 @property (nonatomic, strong) NSUserDefaults *persistence;
 
+- (void) persistTasks;
+
 @end
 
 @implementation TableViewController
@@ -40,12 +42,17 @@ static NSString *tasks_key = @"TASKS";
 
 - (void)applicationWillTerminate:(UIApplication *)app
 {
-    [self.persistence setObject:self.tasks forKey:tasks_key];
+    [self persistTasks]; // does handling this call this matter? can't seem to make the debugger hit this point
 }
 
 - (void) applicationDidEnterBackground:(UIApplication *)application
 {
+    [self persistTasks];
+}
+
+- (void) persistTasks {
     [self.persistence setObject:self.tasks forKey:tasks_key];
+    [self.persistence synchronize];
 }
 
 - (void)viewDidLoad
@@ -125,8 +132,7 @@ static NSString *tasks_key = @"TASKS";
 - (BOOL) textFieldShouldEndEditing:(UITextField *)textField {
     NSIndexPath *indexPath = objc_getAssociatedObject(textField, indexPathForCustomCell);
     self.tasks[indexPath.row] = textField.text;
-    [self.persistence setObject:self.tasks forKey:tasks_key];
-    [self.persistence synchronize];
+    [self persistTasks];
     return YES;
 }
 
