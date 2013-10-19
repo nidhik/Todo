@@ -138,7 +138,7 @@ static NSString *tasks_key = @"TASKS";
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
+    [self onDoneButton];
     return YES;
 }
 
