@@ -136,6 +136,12 @@ static NSString *tasks_key = @"TASKS";
     return YES;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 - (void) onDoneButton {
     self.navigationItem.rightBarButtonItem = self.addButton;
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
@@ -160,6 +166,11 @@ static NSString *tasks_key = @"TASKS";
     return YES;
 }
 */
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+   [self onDoneButton];
+}
 
 
 // Override to support editing the table view.
