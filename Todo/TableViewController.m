@@ -12,10 +12,13 @@
 #import <objc/runtime.h>
 
 static const char * indexPathForCustomCell = "INDEX_PATH";
+static NSString *tasks_key = @"TASKS";
+
 @interface TableViewController ()
 
 @property (nonatomic, strong) NSMutableArray *tasks;
 @property (nonatomic, strong) UIBarButtonItem *addButton;
+@property (nonatomic, strong) NSUserDefaults *persistence;
 
 @end
 
@@ -25,9 +28,24 @@ static const char * indexPathForCustomCell = "INDEX_PATH";
 {
     self = [super initWithStyle:style];
     if (self) {
-        self.tasks = [[NSMutableArray alloc] init];
+        self.persistence = [NSUserDefaults standardUserDefaults];
+        self.tasks = [self.persistence objectForKey:tasks_key];
+        if (!self.tasks) {
+           self.tasks = [[NSMutableArray alloc] init];
+        }
+        
     }
     return self;
+}
+
+- (void)applicationWillTerminate:(UIApplication *)app
+{
+    [self.persistence setObject:self.tasks forKey:tasks_key];
+}
+
+- (void) applicationDidEnterBackground:(UIApplication *)application
+{
+    [self.persistence setObject:self.tasks forKey:tasks_key];
 }
 
 - (void)viewDidLoad
@@ -107,6 +125,8 @@ static const char * indexPathForCustomCell = "INDEX_PATH";
 - (BOOL) textFieldShouldEndEditing:(UITextField *)textField {
     NSIndexPath *indexPath = objc_getAssociatedObject(textField, indexPathForCustomCell);
     self.tasks[indexPath.row] = textField.text;
+    [self.persistence setObject:self.tasks forKey:tasks_key];
+    [self.persistence synchronize];
     return YES;
 }
 
